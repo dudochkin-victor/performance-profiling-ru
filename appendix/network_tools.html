@@ -1,0 +1,398 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js navy">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Приложение A. Инструменты тестирования и мониторинга сети - Performance Profiling Bible</title>
+        
+        
+
+
+        <!-- Custom HTML head -->
+        
+
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        
+        <link rel="icon" href="../favicon.svg">
+        
+        
+        <link rel="shortcut icon" href="../favicon.png">
+        
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "navy";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../preface.html">Предисловие</a></li><li class="chapter-item expanded "><a href="../part_01/intro.html"><strong aria-hidden="true">1.</strong> Основы профилирования производительности</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../part_01/chapter_01.html"><strong aria-hidden="true">1.1.</strong> Профилирование производительности</a></li><li class="chapter-item expanded "><a href="../part_01/summary.html"><strong aria-hidden="true">1.2.</strong> Резюме</a></li></ol></li><li class="chapter-item expanded "><a href="../part_02/intro.html"><strong aria-hidden="true">2.</strong> Сетевая инфраструктура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../part_02/chapter_01.html"><strong aria-hidden="true">2.1.</strong> Профилирование производительности</a></li><li class="chapter-item expanded "><a href="../part_02/summary.html"><strong aria-hidden="true">2.2.</strong> Резюме</a></li></ol></li><li class="chapter-item expanded "><a href="../part_03/intro.html"><strong aria-hidden="true">3.</strong> Серверные приложения</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../part_03/chapter_01.html"><strong aria-hidden="true">3.1.</strong> Профилирование производительности</a></li><li class="chapter-item expanded "><a href="../part_03/summary.html"><strong aria-hidden="true">3.2.</strong> Резюме</a></li></ol></li><li class="chapter-item expanded "><a href="../part_04/intro.html"><strong aria-hidden="true">4.</strong> Базы данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../part_04/chapter_01.html"><strong aria-hidden="true">4.1.</strong> Профилирование производительности</a></li><li class="chapter-item expanded "><a href="../part_04/summary.html"><strong aria-hidden="true">4.2.</strong> Резюме</a></li></ol></li><li class="chapter-item expanded "><a href="../part_05/intro.html"><strong aria-hidden="true">5.</strong> Десктоп приложения</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../part_05/chapter_01.html"><strong aria-hidden="true">5.1.</strong> Профилирование производительности</a></li><li class="chapter-item expanded "><a href="../part_05/summary.html"><strong aria-hidden="true">5.2.</strong> Резюме</a></li></ol></li><li class="chapter-item expanded "><a href="../part_06/intro.html"><strong aria-hidden="true">6.</strong> Мобильные приложения</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../part_06/chapter_01.html"><strong aria-hidden="true">6.1.</strong> Профилирование производительности</a></li><li class="chapter-item expanded "><a href="../part_06/summary.html"><strong aria-hidden="true">6.2.</strong> Резюме</a></li></ol></li><li class="chapter-item expanded "><a href="../part_07/intro.html"><strong aria-hidden="true">7.</strong> Браузерные приложения</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../part_07/chapter_01.html"><strong aria-hidden="true">7.1.</strong> Профилирование производительности</a></li><li class="chapter-item expanded "><a href="../part_07/summary.html"><strong aria-hidden="true">7.2.</strong> Резюме</a></li></ol></li><li class="chapter-item expanded "><a href="../part_08/intro.html"><strong aria-hidden="true">8.</strong> Игровые приложения и шейдеры</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../part_08/chapter_01.html"><strong aria-hidden="true">8.1.</strong> Профилирование производительности</a></li><li class="chapter-item expanded "><a href="../part_08/summary.html"><strong aria-hidden="true">8.2.</strong> Резюме</a></li></ol></li><li class="chapter-item expanded "><a href="../part_09/intro.html"><strong aria-hidden="true">9.</strong> Гетерогенные системы, OpenMP, MPI, OpenCL и Cuda</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../part_09/chapter_01.html"><strong aria-hidden="true">9.1.</strong> Профилирование производительности</a></li><li class="chapter-item expanded "><a href="../part_09/summary.html"><strong aria-hidden="true">9.2.</strong> Резюме</a></li></ol></li><li class="chapter-item expanded "><a href="../conclusion.html">Заключение</a></li><li class="chapter-item expanded affix "><a href="../appendix/network_tools.html" class="active">Приложение A. Инструменты тестирования и мониторинга сети</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        
+                    </div>
+
+                    <h1 class="menu-title">Performance Profiling Bible</h1>
+
+                    <div class="right-buttons">
+                        
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#network-testing-tools-network-performance-diagnostic-tools" id="network-testing-tools-network-performance-diagnostic-tools">Network Testing Tools (Network Performance Diagnostic Tools)</a></h1>
+<p>List of the Best Network Testing Tools: Network performance, Diagnostic, Speed, and Stress Test Tools</p>
+<p>Think of all the problems you face when you try to connect to a network. You may have seen instances where you may be doing everything right but still unable to connect.</p>
+<p>Let’s take another case where you want to launch a website and want to be sure the server responds, how do you really validate and test before launching.</p>
+<p>To help us find out &amp; troubleshoot network issues, monitor network speeds, and other network management, we find 100’s of tools available these days.</p>
+<p>In this article, I have tried to cover some of the top network testing tools which can help us identify and resolve our day to day network related issues.</p>
+<h2><a class="header" href="#lets-begin" id="lets-begin">Let’s begin!</a></h2>
+<h3><a class="header" href="#acunetix" id="acunetix">Acunetix</a></h3>
+<p>Acunetix Online includes a fully automated network vulnerability scanner that detects and reports on over 50,000 known network vulnerabilities and misconfigurations.</p>
+<p>It discovers open ports and running services; assesses the security of routers, firewalls, switches, and load balancers; tests for weak passwords, DNS zone transfer, badly configured Proxy Servers, weak SNMP community strings and TLS/SSL ciphers, among others.</p>
+<p>It integrates with Acunetix Online to provide a comprehensive perimeter network security audit on top of the Acunetix web application audit. <a href="https://www.acunetix.com/network-security-scanner/">link</a></p>
+<h3><a class="header" href="#wan-killer-by-solarwinds" id="wan-killer-by-solarwinds">WAN Killer By SolarWinds</a></h3>
+<p>SolarWinds offers several types of network-related tools. It’s Engineer’s Toolset includes almost all tools required for network testing and comes as one complete package which allows network monitoring, diagnostics, network discovery tools.</p>
+<p>It is a network traffic generator tool and lets user test network performance for a specific WAN in a controlled test environment. This tool allows testing network traffic threshold and load balancing. <a href="https://www.solarwinds.com/network-performance-monitor/use-cases/network-troubleshooting">link</a></p>
+<h3><a class="header" href="#datadog" id="datadog">Datadog</a></h3>
+<p>Datadog Network Performance Monitoring tool can track the performance of on-premise and cloud-based networks with a unique, tag-based approach. You will be able to breakdown the network traffic between hosts, containers, services, or any other tag in Datadog.</p>
+<p>If you combine flow-based NPM with metric-based Network Device Monitoring then you can get complete visibility into network traffic, infrastructure metrics, traces, and logs—all in one place.</p>
+<p>It visually maps traffic flow in an interactive map to help identify traffic bottlenecks and any downstream effects. It is easy to navigate and use, allowing you to see metrics like volume and retransmits without writing queries.</p>
+<p>It can correlate network traffic data with relevant application traces, host metrics, and logs, to unify troubleshooting into one platform. <a href="https://www.datadoghq.com/dg/monitor/network/gen/">link</a></p>
+<h3><a class="header" href="#obkio" id="obkio">Obkio</a></h3>
+<p>Obkio is a simple network performance monitoring solution that allows users to continuously monitor the health of their network and core business applications to improve the end-user experience.</p>
+<p>Obkio’s sleek and user-friendly software application diagnoses the causes of intermittent VoIP, video, and applications slowdown in seconds – because nothing is more frustrating than wasting time due to a poor connection.</p>
+<p>Deploy network performance monitoring Agents at strategic locations in your company’s offices or network destinations to easily identify the source of a system failure so you can quickly apply the corrective measures before it affects your end-users. <a href="https://www.softwaretestinghelp.com/Obkio-Best-Network-Performance-Monitoring-Tool">link</a></p>
+<h3><a class="header" href="#intruder" id="intruder">Intruder</a></h3>
+<p>Intruder is a powerful cloud-based network vulnerability scanner that helps you to find the cybersecurity weaknesses in your most exposed systems to avoid costly data breaches. It is the perfect Network Testing Tool.</p>
+<p>There are more than 9,000 security checks available and a few among them include identifying Application Bugs, CMS issues, Missing patches, Configuration weaknesses, etc.</p>
+<p>Intruder is a perfect security solution for companies of all sizes. It helps to save your time and reduce friction with the development process. It also integrates with AWS, GCP, and Azure.</p>
+<p>A free trial is available for 30 days. There are also several pricing plans available to cater to the needs of businesses of all sizes. <a href="https://intruder.io/">link</a></p>
+<h3><a class="header" href="#manageengine-opmanager" id="manageengine-opmanager">ManageEngine OpManager</a></h3>
+<p>ManageEngine OpManager is an end to end network performance monitoring and management tool that also functions as a network testing tool to perform first and second level troubleshooting based on the nature of the network fault, thus making it robust enough to be chosen as a suitable network testing tool for organizations at all scales.</p>
+<p>Ping, SNMP Ping, Proxy Ping, traceroute, real-time actionable alerts, detailed reports, dashboards, etc make OpManager an excellent network testing and network management tool.</p>
+<p>By enabling add-ons in OpManager, you can:</p>
+<ul>
+<li>Manage critical devices, IP addresses, and switch ports.</li>
+<li>Detect an intrusion of rogue devices.</li>
+<li>Analyze network forensics.</li>
+<li>Remotely check device status and boot devices with its Wake-on-LAN feature.</li>
+<li>Enable advanced port scanning and open port scanning.</li>
+<li>Keep a check on bandwidth usage.</li>
+<li>Back up configuration files. <a href="https://www.manageengine.com/network-monitoring/network-testing-tools.html">link</a></li>
+</ul>
+<h3><a class="header" href="#prtg-network-monitor-network-performance" id="prtg-network-monitor-network-performance">PRTG Network Monitor (Network Performance)</a></h3>
+<p>PRTG is a network monitoring tool from Paessler that comes with easy installation and comes with a mechanism to the auto-detect network.</p>
+<p>Lets you find out who is using the tool and for what purpose. Raises alert if something is found wrong, so helps in fixing before actual users get to face the problem. Overall it’s a good tool if you are looking for monitoring and managing your network traffic. <a href="https://www.paessler.com/prtg">link</a></p>
+<h3><a class="header" href="#visual-truview-by-fluke-networks" id="visual-truview-by-fluke-networks">Visual TruView By Fluke Networks</a></h3>
+<p>Fluke Networks</p>
+<p>Fluke Networks like Solar Winds provides several tools for performing all kinds of Network checks/Testing. They offer solutions for portable devices as well. TruView is an application, network performance monitoring, and troubleshooting tool and lets the user identify if the problem exists in the application, server, client or network. <a href="https://www.nexthink.com/tool/truview/">link</a></p>
+<h3><a class="header" href="#dynatrace-data-center-real-user-monitoring-dcrum" id="dynatrace-data-center-real-user-monitoring-dcrum">Dynatrace Data Center Real User Monitoring (DCRUM)</a></h3>
+<p>This tool passively monitors 100% of the network traffic across all physical and virtual devices. Besides, letting the user know about network performance, this tool also tells about the impact on enterprise application performance and end-user experience, hence improving the user experience.</p>
+<p>This allows monitoring for multiple technologies including SAP, Citrix, Oracle, VOIP, SOAP, HTML/XML web services. <a href="https://www.dynatrace.com/platform/network-monitoring/">link</a></p>
+<h3><a class="header" href="#ndt-network-diagnostic-tool" id="ndt-network-diagnostic-tool">NDT (Network Diagnostic Tool)</a></h3>
+<p>NDT is a client-server program that is mainly used to test network performance. This web 100 based tool can be used to perform testing for several different network configurations on a desktop or a laptop. This uses an enhanced server for diagnostics and also generates detailed test results which always prove helpful to the tester.</p>
+<p>Also, supports feature where results can be directly emailed to the concerned teams for faster resolution. <a href="http://software.internet2.edu/ndt/index.html">link</a></p>
+<h3><a class="header" href="#ixchariot-by-ixia" id="ixchariot-by-ixia">Ixchariot By Ixia</a></h3>
+<p>This is one of the leading tools when it comes to troubleshooting networks and assessing applications. This tool can be used before and after deployment. This allows capturing networking diagnostics virtually anywhere. This tool has been designed to help IT, teams. This lets users measure device performance over Wi-Fi. <a href="https://www.keysight.com/ru/ru/products/network-test/performance-monitoring/ixchariot.html">link</a></p>
+<h3><a class="header" href="#netstress" id="netstress">Netstress</a></h3>
+<p>This is a free tool that helps a user in generating network traffic and analyzing networks throughput performance. This works well for both wired and wireless connections. Supports testing for multiple network adapters, allows testing both UDP and TCP data transfer, supports multiple streams. <a href="http://nutsaboutnets.com/archives/netstress/">link</a></p>
+<h3><a class="header" href="#experitest" id="experitest">Experitest</a></h3>
+<p>This tool lets the user test by emulating real-world network conditions. A user can test by defining conditions based on geographical location, server, network type, and operator. This also let’s emulate mobile networking issues like a weak signal, reception deterioration. A good tool to be used for testing as it helps in identifying issues before deployment. <a href="https://digital.ai/solutions/mobile-testing">link</a></p>
+<h3><a class="header" href="#flent-flexible-network-tester" id="flent-flexible-network-tester">Flent (Flexible Network Tester)</a></h3>
+<p>This is a tool that allows experimental evaluations of the network instead of simulation. This is a python wrapper and allows running tests on multiple tools, maintains information on which tool to run in a configuration file. It’s built-in batch capabilities make it easy to specify a series of tests that need to be run in sequence. <a href="https://flent.org/">link</a></p>
+<h3><a class="header" href="#fortitester" id="fortitester">FortiTester</a></h3>
+<p>This is a very powerful tool that lets the user measure the performance of network devices. It supports TCP throughput testing, TCP Connection testing, HTTP/HTTPS CPS testing, HTTP/HTTPS RPS testing, UDP PPS testing and CAPWAP throughput testing. <a href="https://www.fortinet.com/products/network-testing/fortitester">link</a></p>
+<h3><a class="header" href="#tomahawk" id="tomahawk">Tomahawk</a></h3>
+<p>This is a command-line tool which helps in testing throughput and blocking capabilities of NIPS (network-based intrusion prevention systems). This tool lets the user replay the same attack several times hence giving an option to test and recreate test conditions. Also, it allows generation 200-450 Mbps traffic. <a href="http://tomahawk.sourceforge.net/">link</a></p>
+<h3><a class="header" href="#netquality-by-softpedia" id="netquality-by-softpedia">NetQuality By Softpedia</a></h3>
+<p>Softpedia has a lot of network tools for performing different types of checks. NetQuality is an excellent tool that analyses the network to assess suitability for VOIP. This allows a user to record VOIP properties and verify it without installing the actual device.</p>
+<p>It comes with a comprehensive UI and easy to use tool since most of the tasks are automated. <a href="https://www.softpedia.com/get/Network-Tools/Network-Testing/NetQuality.shtml">link</a></p>
+<h3><a class="header" href="#traffic-emulator-by-nsasoft" id="traffic-emulator-by-nsasoft">Traffic Emulator By Nsasoft</a></h3>
+<p>Traffic Emulator is another great tool by Softpedia which helps the network team in emulating traffic to ensure all network components work properly even under heavy traffic. Mainly it helps in identifying any existing vulnerability that might result in device failure under heavy traffic load. <a href="https://www.softpedia.com/get/Network-Tools/Network-Testing/TrafficEmulator.shtml">link</a></p>
+<h3><a class="header" href="#simple-port-tester" id="simple-port-tester">Simple Port Tester</a></h3>
+<p>This is a very handy and simple tool that lets the user find out if ports are open or not. This allows testing multiple ports through a specific IP address. This comes with a very simple UI and can be used by anyone. <a href="https://www.softpedia.com/get/Network-Tools/Network-Testing/Simple-Port-Tester.shtml">link</a></p>
+<h3><a class="header" href="#network-monitor-by-spiceworks" id="network-monitor-by-spiceworks">Network Monitor By Spiceworks</a></h3>
+<p>This tool from Spiceworks is a great tool for monitoring Networks, can be used to isolate and fix issues before they are seen by real users. It also has a feature that lets users customize alerts and notifications.</p>
+<p>Provides dynamic dashboard making it easy to use, allows tracking bandwidth usage and saturation and supports troubleshooting and debugging if any process and service go down. <a href="http://www.spiceworks.com/free-network-monitoring-management-software/">link</a></p>
+<h3><a class="header" href="#netcrunch" id="netcrunch">NetCrunch</a></h3>
+<p>This tool supports the monitoring of Network Infrastructure, virtual machines, windows, VMware ESXI. Its flexible UI presents a user with an excellent visualization by displaying alerts, network traffic, and performance views, all being linked which helps to troubleshoot network problems easily.</p>
+<p>Also, provides an excellent analytical feature where a user can analyze network trends and also compare historic network performance. <a href="https://www.adremsoft.com/">link</a></p>
+<h3><a class="header" href="#netflow-analyzer" id="netflow-analyzer">Netflow Analyzer</a></h3>
+<p>This is a network traffic analytics tool that can provide information on real-time bandwidth performance. Besides network forensics and network analysis, it also helps the user to optimize the bandwidth usage. Overall, this is an excellent tool with various features and you can opt if you are looking for a good bandwidth monitoring tool <a href="https://www.manageengine.com/products/netflow/">link</a></p>
+<h3><a class="header" href="#network-security-auditor" id="network-security-auditor">Network Security Auditor</a></h3>
+<p>This is a suite of more than 45 network tools &amp; utilities and allows activities like monitoring, network auditing, and vulnerability scanning. This is one of the best network security tools and lets users scan the network for vulnerabilities. This allows checking for all methods which hackers can use to attack.</p>
+<p>It also comes with firewall systems, real-time monitoring, and packet filtering. Other important features that make this unique is, just with 1 license this allows unlimited scanning. <a href="http://www.nsauditor.com/">link</a></p>
+<h3><a class="header" href="#paesslers-snmp-tester" id="paesslers-snmp-tester">Paessler’s SNMP Tester</a></h3>
+<p>This tool helps users to monitor SNMP activities to identify issues if any in the SNMP monitoring configurations. This comes with a very user-friendly layout and also has a support team to assist if required in setting up parameters etc. Test runs become very easy to configure using this tool. <a href="https://www.softpedia.com/get/Network-Tools/Network-Testing/Paessler-SNMP-Tester.shtml">link</a></p>
+<h3><a class="header" href="#activesync-tester" id="activesync-tester">ActiveSync Tester</a></h3>
+<p>This is a great diagnostics tool to identify connectivity issues and DNS related problems in the exchange servers. This supports both inside and outside firewall clients, also allows running tests to identify SSL support. Overall, this is very easy to use a tool because of its handy interface.</p>
+<p>It’s diagnostics reports provide sufficient details for users to understand the issue and resolve without much problem. <a href="https://www.softpedia.com/get/Network-Tools/Network-Testing/ActiveSync-Tester.shtml">link</a></p>
+<h3><a class="header" href="#perfsonar" id="perfsonar">Perfsonar</a></h3>
+<p>This tool also helps in monitoring network performance. This lets a user know details about bulk data transfer, how the network responds to video and audio streaming.</p>
+<p>There are 1000’s of Perfsonar instances are deployed worldwide, some of them are available for open testing. Its global infrastructure makes this tool different from other tools and makes it easy to use for network users. <a href="https://www.perfsonar.net/">link</a></p>
+<h3><a class="header" href="#lan-speed-test-lite" id="lan-speed-test-lite">LAN Speed Test (Lite)</a></h3>
+<p>It’s a free tool that lets user measure speeds for LAN (wired as well as wireless), file transfer, USB drive, and hard drive. It comes with an easy to use interface and requires no installation. <a href="https://totusoft.com/lanspeed">link</a></p>
+<h3><a class="header" href="#tamosoft" id="tamosoft">TamoSoft</a></h3>
+<p>This free tool lets a user send data and keeps calculating upstream and downstream throughput values. It supports both IPv4 and IPv6 connections and works well on Windows and Mac OS X. <a href="https://www.tamos.com/products/throughput-test/">link</a></p>
+<h2><a class="header" href="#other-network-test-tools" id="other-network-test-tools">Other Network Test Tools</a></h2>
+<h3><a class="header" href="#port-detective" id="port-detective">Port Detective</a></h3>
+<p>This tool lets the user find out for open ports. This is designed to work well on Windows systems. <a href="https://www.softpedia.com/get/Network-Tools/Network-Testing/Port-Detective.shtml">link</a></p>
+<h3><a class="header" href="#passmark-advanced-network-test" id="passmark-advanced-network-test">PassMark Advanced Network Test</a></h3>
+<p>This tool helps in measuring the data transfer rate for systems running performance tests. <a href="https://www.passmark.com/products/performancetest/pt_advnet.php">link</a></p>
+<h3><a class="header" href="#microsoft-network-speed-test" id="microsoft-network-speed-test">Microsoft Network Speed Test</a></h3>
+<p>A free tool, liked by most users since this provides the most accurate speed. It lets you measure network delay, download, and upload speed. <a href="https://www.microsoft.com/en-us/p/network-speed-test/9wzdncrfhx52">link</a></p>
+<h3><a class="header" href="#nmap" id="nmap">Nmap</a></h3>
+<p>NMAP is a free open source tool used for network discoveries and security auditing. It is flexible and supports multiple platforms. <a href="https://nmap.org/">link</a></p>
+<h3><a class="header" href="#tcpdump--libpcap" id="tcpdump--libpcap">Tcpdump &amp; Libpcap</a></h3>
+<p>Tcpdump is an open-source tool which lets user analyze packets and libpcap maintains the library for network traffic capture. <a href="http://www.tcpdump.org/">link</a></p>
+<h3><a class="header" href="#wireshark" id="wireshark">Wireshark</a></h3>
+<p>Wireshark is an excellent tool to monitor network traffic. <a href="https://www.wireshark.org/">link</a></p>
+<h3><a class="header" href="#opennms" id="opennms">OpenNMS</a></h3>
+<p>It’s an open-source free Network Management tool. <a href="https://www.opennms.com/">link</a></p>
+<h3><a class="header" href="#npad" id="npad">NPAD</a></h3>
+<p>It’s a diagnostic tool which lets user diagnose network performance issues. <a href="https://www.measurementlab.net/tests/npad/">link</a></p>
+<h3><a class="header" href="#iperf3" id="iperf3">iperf3</a></h3>
+<p>It’s an open-source network bandwidth measurement tool. <a href="https://github.com/esnet/iperf">link</a></p>
+<h3><a class="header" href="#paesslers-wmitester" id="paesslers-wmitester">Paessler’s WMITester</a></h3>
+<p>This is a freeware tool from Paessler for testing the accessibility of Windows Management Instrumentation. <a href="https://www.paessler.com/tools/wmitester">link</a></p>
+<h3><a class="header" href="#one-way-ping-owamp" id="one-way-ping-owamp">One Way Ping (OWAMP)</a></h3>
+<p>This tool lets a user know about the exact behavior of their network and utilizes resources accordingly. <a href="http://software.internet2.edu/owamp/">link</a></p>
+<h3><a class="header" href="#fiddler" id="fiddler">Fiddler</a></h3>
+<p>Fiddler is a free web debugging tool which logs all traffic between computer and internet. <a href="https://www.telerik.com/fiddler">link</a></p>
+<h3><a class="header" href="#nuttcp" id="nuttcp">Nuttcp</a></h3>
+<p>It’s a free network troubleshooting tool. <a href="https://www.nuttcp.net/nuttcp/beta/nuttcp-7.3.2.c">link</a></p>
+<h1><a class="header" href="#the-top-of-free-and-open-source-network-monitoring-tools" id="the-top-of-free-and-open-source-network-monitoring-tools">The Top of Free and Open Source Network Monitoring Tools</a></h1>
+<p>Choosing the right network monitoring solution for your enterprise is not easy. IT professionals and decision-makers need to consider several factors when choosing solutions for their business, such as security, compatibility, ease of use, and (of course) budget. Enterprise-grade tech solutions are typically viewed as expensive, but is that always the case? Not necessarily! There are several free and open source network monitoring tools that your business should consider when choosing a network monitoring solution.</p>
+<p>That’s why we at Solutions Review have compiled a list of the best 17 free and open source network monitoring tools. These tools are either free to install and use, or released under an open source license. They should definitely be considered if your enterprise wants to keep costs down, but we should note that they may not be the best fit for your company. Many free tools are trimmed-down versions of a fully-equipped network monitoring program, and a lot of open source developments require technical knowledge or developer expertise. As such, we’ve listed some of the major features of each free and open source tool so you know what each solution specializes in.</p>
+<p>If you’re looking for more resources on the best free network monitoring tools and vendors, our Free and Open Source Network Monitoring Buyer’s Guide has you covered. The guide profiles 16 free and open source network monitoring tools that provide similar monitoring capabilities to enterprise-grade commercial offerings for a fraction — or none — of the cost. It is the perfect resource for small businesses looking to eliminate network performance issues and ensure high availability. You can download that guide <a href="https://solutionsreview.com/network-monitoring/network-monitoring-free-open-source-guide/">here</a>.</p>
+<h2><a class="header" href="#cacti" id="cacti">Cacti</a></h2>
+<p>Cacti is an open source network monitoring tool based on RRDTool’s data logging and graphing system. The tool uses network polling and data collection functionality to gather information on devices on networks of any size. This includes the ability to design custom scripts for data collection alongside support for SNMP polling. It then displays this information in easy-to-understand graphs which can be arranged in whatever hierarchy your business is most comfortable with. <a href="https://www.cacti.net/">link</a></p>
+<h2><a class="header" href="#eventsentry-light" id="eventsentry-light">EventSentry Light</a></h2>
+<p>EventSentry Light is a free version of EventSentry’s SIEM, server monitoring, and network monitoring tool suite. The Light version still features the same event log monitoring capabilities as the full version, so your enterprise can collect and interpret data from logs on devices connected to your network. EventSentry Light also handles system health monitoring functions, including service monitoring, performance issue monitoring, and hardware failure monitoring. <a href="https://www.eventsentry.com/downloads/select-edition">link</a></p>
+<h2><a class="header" href="#famatech-advanced-ip-scanner" id="famatech-advanced-ip-scanner">Famatech Advanced IP Scanner</a></h2>
+<p>Famatech’s Advanced IP Scanner is a free network monitoring scanning tool that provides analysis on LAN networks and devices. Advanced IP Scanner allows you to scan for devices on your network and remotely control connected computers and nodes. You can switch computers off from the tool if you know that the device isn’t in use and is utilizing valuable resources. The tool connects with Famatech’s Radmin solution for remote IT management, so you can manage IPs from anywhere. <a href="https://www.advanced-ip-scanner.com/">link</a></p>
+<h2><a class="header" href="#icinga" id="icinga">Icinga</a></h2>
+<p>Icinga is an open source network monitoring tool that measures network availability and performance. Through a web interface, your enterprise can observe hosts and applications across your entire network infrastructure. The tool is natively scalable and can easily be configured to work with every kind of device. There are also a handful of Icinga modules for specific monitoring capabilities, such as monitoring for VMWare’s vSphere cloud environment and business process modelling. <a href="https://icinga.com/products/">link</a></p>
+<h2><a class="header" href="#librenms" id="librenms">LibreNMS</a></h2>
+<p>LibreNMS is an open source network monitoring system that uses several network protocols to observe every device on your network. The LibreNMS API can retrieve, manage, and graph the data it collects and supports horizontal scaling to grow its monitoring capabilities alongside your network. The tool features a flexible alerting system that is tailor-made to communicate with you via the method that works best for your company. They offer native iOS and Android apps as well. <a href="https://www.librenms.org/">link</a></p>
+<h2><a class="header" href="#logrhythm-netmon-freemium" id="logrhythm-netmon-freemium">LogRhythm NetMon Freemium</a></h2>
+<p>LogRhythm NetMon Freemium is a free version of LogRhythm NetMon that provides the same enterprise-grade packet capturing and analysis capabilities as the full version. While there are limits on packet storage and data processing, The freemium version still allows users to perform network threat detection and response functions based on data packet analysis. It also provides the same network threat alerting system as the full version, allowing you to stay up to date on your network’s performance and security. <a href="https://logrhythm.com/products/logrhythm-netmon-freemium/">link</a></p>
+<h2><a class="header" href="#nagios-core" id="nagios-core">Nagios Core</a></h2>
+<p>Nagios Core is a free network monitoring tool designed as the basis for other monitoring and alerting software offered by Nagios. It is primarily a performance check tool that schedules and executes checks for network performance across the entire infrastructure. As the event processor for performance checks used by other Nagios software, Nagios Core is also able to extend its capabilities with independent add-ons via the Naigos Exchange. <a href="https://www.nagios.org/projects/nagios-core/">link</a></p>
+<h2><a class="header" href="#observium-community" id="observium-community">Observium Community</a></h2>
+<p>Observium Community is the free version of Observium’s network monitoring tool. With the free version, you can monitor an unlimited amount of devices while also taking full advantage of Obersvium’s network mapping features. The Observium network monitoring platform features automatic discovery of connected devices. It also comes equipped with discovery protocols to ensure that the map of your network is up to date. This way, you can account for new devices as they connect to the network.
+Our Free and Open Source Network Monitoring Buyer’s Guide contains profiles on the top free and open source network monitoring tools that provide similar monitoring capabilities to enterprise-grade commercial offerings for a fraction — or none — of the cost of a premium tool. <a href="https://www.observium.org/">link</a></p>
+<h2><a class="header" href="#pandora-fms" id="pandora-fms">Pandora FMS</a></h2>
+<p>Pandora FMS is an open source monitoring tool that helps companies observe their entire IT infrastructure. It not only features network monitoring capabilities, but also Windows and Unix servers and virtual interfaces. For networks, Pandora FMS contains features such as ICMP polling, SNMP support, network latency monitoring, and system overload. You can also install agents on devices to observe factors like device temperature and overheating, as well as logfile occurrences. <a href="https://pandorafms.com/community/">link</a></p>
+<h2><a class="header" href="#paessler-prtg-100" id="paessler-prtg-100">Paessler PRTG 100</a></h2>
+<p>Paessler PRTG 100 is a network monitoring tool that offers a free version: PRTG 100. PRTG offers this tier of their monitoring program that supports 100 devices on a single network. PRTG’s monitoring features include capabilities to track network traffic, applications, data packets, and bandwidth. The software functions as an all-in-one monitoring suite which is also able to monitor cloud environments, virtual machines, and hardware in addition to a network. <a href="https://www.paessler.com/prtg">link</a>
+<a href="https://www.paessler.com/howto-free-network-monitoring">link</a></p>
+<h2><a class="header" href="#prometheus" id="prometheus">Prometheus</a></h2>
+<p>Prometheus is an open source monitoring solution focused on data collection and analysis. It allows users to set up network monitoring capabilities using the native toolset. The tool is able to collect information on devices using SNMP pings and examine network bandwidth usage from the device perspective, among other functinos. The PromQL system analyzes data and allows for the program to generate graphs, tables, and other visuals on the systems it monitors. <a href="https://prometheus.io/">link</a></p>
+<h2><a class="header" href="#solarwinds-real-time-bandwidth-monitor" id="solarwinds-real-time-bandwidth-monitor">SolarWinds Real-Time Bandwidth Monitor</a></h2>
+<p>SolarWinds Real-Time Bandwidth Monitor is a free bandwidth monitoring tool. The tool tracks bandwidth usage in real-time and displays graphs on your network’s bandwidth based on bandwidth polling. The tool alerts you when bandwidth usage enters a critical state, letting your enterprise instantly know when your network’s bandwidth is running low. You can define critical bandwidth usage levels yourself so the tool knows exactly when the devices on your network are using too much bandwidth. <a href="https://www.solarwinds.com/free-tools/real-time-bandwidth-monitor">link</a></p>
+<h2><a class="header" href="#spiceworks-network-monitor" id="spiceworks-network-monitor">Spiceworks Network Monitor</a></h2>
+<p>Spiceworks Network Monitor is a free network monitoring program and one of several networking tools that Spiceworks offers. Their monitoring solution offers real-time monitoring capabilities for networks and devices. You can perform ping checks to verify that your network and all connected nodes are currently functional. The tool also supports common network protocols, like HTTP and SIP, or user-defined custom protocols, as well as custom settings for alerts based on sensitivity. <a href="https://www.spiceworks.com/free-network-monitoring-management-software/">link</a></p>
+<h2><a class="header" href="#telerik-fiddler" id="telerik-fiddler">Telerik Fiddler</a></h2>
+<p>Telerik Fiddler is a free web monitor and debugging proxy program. The tool is designed specifically for HTTP and HTTPS monitoring, with Fiddler’s web traffic monitoring and data collection capabilities. It can also debug web traffic by ensuring that the proper cookies, headers, and cache directives are being transferred. Fiddler also has a focus on network monitoring by delivering HTTP caching and data compression, in addition to finding performance bottlenecks. <a href="https://www.telerik.com/fiddler">link</a></p>
+<h2><a class="header" href="#wireshark-1" id="wireshark-1">Wireshark</a></h2>
+<p>Wireshark is an open source network protocol analyzer that features live network data capture and analysis. The tool executes deep inspections of several different network protocols to determine your network performance on multiple levels. Wireshark also allows users to capture data packets and analyze them even when the network is offline. Data that Wireshark captures can be stored in many universal or shared file formats, allowing other tools to help interpret the data on your network. <a href="https://www.wireshark.org/">link</a></p>
+<h2><a class="header" href="#zabbix" id="zabbix">Zabbix</a></h2>
+<p>Zabbix is an open source monitoring tool suite that includes network monitoring. The network monitoring capabilties of Zabbix includes performance metric analysis, such as bandwidth usage, packet loss, and CPU/memory utilization. It can also detect network node and connection health problems by checking for devices in critical condition. Zabbix can alert you when hardware functions are dropping (fan speed of a network device is low) or when an SNMP check is not responded to. <a href="https://www.zabbix.com/network_monitoring">link</a></p>
+<h2><a class="header" href="#checkmk" id="checkmk">Checkmk</a></h2>
+<p>Checkmk Raw Edition is an open source infrastructure and application monitoring tool that also includes network monitoring capabilities. For network monitoring, Checkmk can discover and monitor switches and routers, wireless networks, and firewalls; the software supports integration with several network hardware vendors. The solution uses a rule-based concept for configuring network and device monitoring, allowing your company to configure an entire network to monitor for specific metrics. <a href="https://checkmk.com/">link</a></p>
+<h2><a class="header" href="#netxms" id="netxms">NetXMS</a></h2>
+<p>NetXMS is an open source infrastructure and network monitoring and management solution. The tool features flexible event processing, reporting, and visual graphing for all layers of the IT infrastructure. For network monitoring, NetXMS offers automatic Layer 2 and 3 discovery and full SMNPv3 support. The vendor’s network monitoring solution also includes both active and passive discovery, combining both scanning probes and information collection capabilities together. <a href="https://www.netxms.org/">link</a></p>
+<h2><a class="header" href="#ntop" id="ntop">ntop</a></h2>
+<p>ntopng is an open source network traffic analysis tool that also features network monitoring capabilities. The tool is a network traffic probe that sorts network traffic into different criteria, including IP addresses and throughput. By characterizing network traffic, your enterprise can easily determine different network statistics that are affecting your network. While ntopng’s Community version is released as open source, Professional and Enterprise versions are also available. <a href="https://www.ntop.org/">link</a></p>
+<h2><a class="header" href="#opmantek" id="opmantek">Opmantek</a></h2>
+<p>Opmantek Network Management Information System is an open source network management solution for scalable network performance and device status monitoring. NMIS has support for 10,000 vendors and classifies network events based on their business impact. NMIS is included in Opmantek’s NMIS professional bundle, which also includes opCharts for charting performance through customizable dashboards and opReports for analyzing performance data and generating reports on this data. <a href="https://opmantek.com/">link</a></p>
+<hr />
+<h2><a class="header" href="#conclusion" id="conclusion">Conclusion</a></h2>
+<p>The above lists of network testing tools to monitor and manage the high-performance networks have been compiled after certain research, if you feel we have missed out any other important tool here, please free to add.</p>
+<p>Looking for a solution to help you improve your network performance? Our Network Monitoring Buyer’s Guide contains profiles on the top network performance monitor vendors, as well as questions you should ask providers and yourself before buying.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../conclusion.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a rel="prev" href="../conclusion.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>
